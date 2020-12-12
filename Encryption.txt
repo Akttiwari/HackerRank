@@ -1,0 +1,42 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String args[])
+    {
+
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        s=s.replaceAll("\\s","");
+        int n=s.length(),i,x=0,j=0;
+        char ch;
+        double r= Math.sqrt(n);
+        double c= Math.ceil(r),f = Math.floor(r);
+
+        if(c*f<n)
+            f+=1;
+
+        for(i=0;i<c;i++) {
+            for(j=0;j<f;j++) {
+
+                if(i+x>=n)
+                    break;
+
+                ch = s.charAt(i + x);
+                System.out.print(ch);
+                x = x + (int) (c);
+
+            }
+            System.out.print(" ");
+            x=0;
+        }
+    }
+}
