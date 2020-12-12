@@ -1,0 +1,36 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    private static final Scanner in = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        
+        int n = in.nextInt();
+        
+        String arr[] = new String[n];
+        
+        for(int i = 0; i < n; i++){
+            arr[i] = in.next();
+        }
+        
+        for(int i = 1; i < n - 1; i++){
+            for(int j = 1; j < n - 1; j++){
+                if(Character.getNumericValue(arr[i].charAt(j)) > Math.max(Math.max(Character.getNumericValue(arr[i - 1].charAt(j)) , Character.getNumericValue(arr[i + 1].charAt(j))) , Math.max(Character.getNumericValue(arr[i].charAt(j - 1)) ,Character.getNumericValue(arr[i].charAt(j + 1))))){
+                    char[] chars = arr[i].toCharArray();
+                    chars[j] = 'X';
+                    arr[i] = String.valueOf(chars);
+                }
+            }
+        }
+        
+        for(int i = 0; i < n; i++)
+            System.out.println(arr[i]);           
+    }
+}
